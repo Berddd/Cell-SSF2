@@ -65,13 +65,13 @@ package goku_fla
                 {
                     if (!this.character.isFacingRight())
                     {
-                        this.self.setX((this.character.getX() - 30));
+                        this.self.setX((this.character.getX() - 0));
                     }
                     else
                     {
-                        this.self.setX((this.character.getX() + 30));
+                        this.self.setX((this.character.getX() + 0));
                     };
-                    this.self.setY((this.character.getY() - 38));
+                    this.self.setY((this.character.getY() - 0));
                 };
             };
         }

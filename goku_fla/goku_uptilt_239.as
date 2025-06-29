@@ -36,7 +36,6 @@ package goku_fla
     {
 
         public var attackBox:MovieClip;
-        public var attackBox2:MovieClip;
         public var hitBox:MovieClip;
         public var hitBox2:MovieClip;
         public var hitBox3:MovieClip;
@@ -50,7 +49,7 @@ package goku_fla
 
         public function goku_uptilt_239()
         {
-            addFrameScript(0, this.frame1, 3, this.frame4, 6, this.frame7, 7, this.frame8, 10, this.frame11);
+            addFrameScript(0, this.frame1, 4, this.frame5, 10, this.frame11, 11, this.frame12);
         }
 
         internal function frame1():*
@@ -63,10 +62,10 @@ package goku_fla
             };
         }
 
-        internal function frame4():*
+        internal function frame5():*
         {
             this.self.playAttackSound(1);
-            this.self.setXSpeed(7, false);
+            this.self.setXSpeed(4, false);
             if ((((this.playsound > 0.2) && (this.playsound <= 0.4)) && (!(this.audio == 1))))
             {
                 this.self.playVoiceSound(1);
@@ -89,12 +88,7 @@ package goku_fla
             };
         }
 
-        internal function frame7():*
-        {
-            this.self.setXSpeed(0);
-        }
-
-        internal function frame8():*
+        internal function frame11():*
         {
             this.self.updateAttackStats({
                 "jumpCancelAttack":true,
@@ -102,7 +96,7 @@ package goku_fla
             });
         }
 
-        internal function frame11():*
+        internal function frame12():*
         {
             this.self.endAttack();
         }

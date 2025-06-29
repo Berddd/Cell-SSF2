@@ -24,7 +24,7 @@ package goku_fla
 
         public function goku_jump_mida_229()
         {
-            addFrameScript(0, this.frame1, 17, this.frame18, 19, this.frame20);
+            addFrameScript(0, this.frame1, 2, this.frame3, 17, this.frame18, 19, this.frame20);
         }
 
         internal function frame1():*
@@ -36,6 +36,15 @@ package goku_fla
                 this.done = false;
             };
         }
+		
+		internal function frame3():*
+		{
+			var effectMC:MovieClip = this.self.attachEffect("doublejumpeffectforcell");
+		    if ((effectMC.parent) && (effectMC.parent === this.self.getMC().parent))
+		    {
+			    effectMC.parent.setChildIndex(effectMC,this.self.getMC().parent.getChildIndex(this.self.getMC()));
+		    }
+		}
 
         internal function frame18():*
         {

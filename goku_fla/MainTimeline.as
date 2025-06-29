@@ -140,12 +140,12 @@ package goku_fla
                     "xSpeedDecay":-0.5,
                     "canFallOff":false,
                     "cpuAttackQueue":"a_air;a_air_up;b_down_air",
-                    "reenableTimer":6,
-                    "attackVoice1_id":"goku_grunt1",
-                    "attackVoice2_id":"goku_grunt2",
-                    "attackVoice3_id":"goku_grunt3",
-                    "attackVoice4_id":"goku_grunt4",
-                    "attackSound1_id":"goku_swing_1",
+                    "reenableTimer":4,
+                    "attackVoice1_id":"cell_grunt7",
+                    "attackVoice2_id":"cell_grunt8",
+                    "attackVoice3_id":"cell_grunt5",
+                    "attackVoice4_id":"cell_grunt3",
+                    "attackSound1_id":"dbz_swingsound1",
                     "attackBoxes":{
                         "attackBox":{
                             "damage":6,
@@ -153,12 +153,12 @@ package goku_fla
                             "hitStun":4,
                             "hitLag":-1.2,
                             "selfHitStun":2,
-                            "effect_id":"effect_lightHit",
-                            "direction":80,
+                            "effect_id":"hitsparkupforcell",
+                            "direction":65,
                             "reversableAngle":false,
-                            "power":33,
-                            "kbConstant":130,
-                            "effectSound":"brawl_punch_s"
+                            "power":22,
+                            "kbConstant":120,
+                            "effectSound":"cell_kick_medium1"
                         },
                         "attackBox2":{
                             "damage":6,
