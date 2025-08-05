@@ -57,7 +57,7 @@ package goku_fla
 
         public function goku_down_air_407()
         {
-            addFrameScript(0, this.frame1, 5, this.frame6, 8, this.frame9, 9, this.frame10, 10, this.frame11, 11, this.frame12, 12, this.frame13, 13, this.frame14, 14, this.frame15, 15, this.frame16, 16, this.frame17, 18, this.frame19, 19, this.frame20, 20, this.frame21, 29, this.frame30);
+            addFrameScript(0, this.frame1, 4, this.frame5, 10, this.frame11, 13, this.frame14, 14, this.frame15, 15, this.frame16, 16, this.frame17, 17, this.frame18, 18, this.frame19, 19, this.frame20, 20, this.frame21, 21, this.frame22, 24, this.frame25, 25, this.frame26, 28, this.frame29, 29, this.frame30, 30, this.frame31, 31, this.frame32, 32, this.frame33, 33, this.frame34, 34, this.frame35, 35, this.frame36, 36, this.frame37, 38, this.frame39, 39, this.frame40, 40, this.frame41, 46, this.frame47);
         }
 
         public function jumpToContinue(_arg_1:Event=null):*
@@ -65,6 +65,15 @@ package goku_fla
             SSF2API.removeEventListener(this.self, SSF2Event.GROUND_TOUCH, this.jumpToContinue);
             this.self.updateAttackStats({"allowControl":false});
             gotoAndPlay("continue");
+        }
+		
+		public function chargeCheck():void
+        {
+            if(!(this.self.getControls().BUTTON2))
+            {
+                this.gotoAndPlay("uncharged");
+                SSF2API.destroyTimer(this.self, this.chargeCheck);
+            }
         }
 
         internal function frame1():*
@@ -85,8 +94,13 @@ package goku_fla
                 SSF2API.addEventListener(this.self, SSF2Event.GROUND_TOUCH, this.self.toIdle);
             };
         }
+		
+		internal function frame5():*
+		{
+			SSF2API.createTimer(this.self, 1, 0, this.chargeCheck);
+		}
 
-        internal function frame6():*
+        internal function frame11():*
         {
             if ((((this.playsound > 0.2) && (this.playsound <= 0.4)) && (!(this.audio == 1))))
             {
@@ -116,46 +130,20 @@ package goku_fla
             SSF2API.addEventListener(this.self, SSF2Event.GROUND_TOUCH, this.jumpToContinue);
         }
 
-        internal function frame9():*
-        {
-            this.slideDist--;
-            this.slideDist--;
-        }
-
-        internal function frame10():*
-        {
-            this.slideDist--;
-            this.slideDist--;
-        }
-
-        internal function frame11():*
-        {
-            this.slideDist--;
-        }
-
-        internal function frame12():*
-        {
-            this.slideDist--;
-        }
-
-        internal function frame13():*
-        {
-            this.slideDist--;
-        }
-
         internal function frame14():*
         {
+            this.slideDist--;
             this.slideDist--;
         }
 
         internal function frame15():*
         {
             this.slideDist--;
+            this.slideDist--;
         }
 
         internal function frame16():*
         {
-            this.slideDist--;
             this.slideDist--;
         }
 
@@ -164,12 +152,121 @@ package goku_fla
             this.slideDist--;
         }
 
+        internal function frame18():*
+        {
+            this.slideDist--;
+        }
+
         internal function frame19():*
+        {
+            this.slideDist--;
+        }
+
+        internal function frame20():*
+        {
+            this.slideDist--;
+        }
+
+        internal function frame21():*
+        {
+            this.slideDist--;
+            this.slideDist--;
+        }
+
+        internal function frame22():*
+        {
+            this.slideDist--;
+        }
+
+        internal function frame25():*
+        {
+            this.self.endAttack();
+        }
+		
+		internal function frame26():*
+        {
+            if ((((this.playsound > 0.2) && (this.playsound <= 0.4)) && (!(this.audio == 1))))
+            {
+                this.self.playVoiceSound(1);
+                this.self.setGlobalVariable("audio", 1);
+            };
+            if ((((this.playsound > 0.4) && (this.playsound <= 0.6)) && (!(this.audio == 2))))
+            {
+                this.self.playVoiceSound(2);
+                this.self.setGlobalVariable("audio", 2);
+            };
+            if ((((this.playsound > 0.6) && (this.playsound <= 0.8)) && (!(this.audio == 3))))
+            {
+                this.self.playVoiceSound(3);
+                this.self.setGlobalVariable("audio", 3);
+            };
+            if ((((this.playsound > 0.8) && (this.playsound <= 1)) && (!(this.audio == 4))))
+            {
+                this.self.playVoiceSound(4);
+                this.self.setGlobalVariable("audio", 4);
+            };
+            this.self.setYSpeed(10);
+            this.self.setXSpeed(8, false);
+            this.self.playAttackSound(1);
+            this.self.playAttackSound(2);
+            SSF2API.removeEventListener(this.self, SSF2Event.GROUND_TOUCH, this.self.toIdle);
+            SSF2API.addEventListener(this.self, SSF2Event.GROUND_TOUCH, this.jumpToContinue);
+        }
+		
+		internal function frame29():*
+        {
+            this.slideDist--;
+            this.slideDist--;
+        }
+
+        internal function frame30():*
+        {
+            this.slideDist--;
+            this.slideDist--;
+        }
+
+        internal function frame31():*
+        {
+            this.slideDist--;
+        }
+
+        internal function frame32():*
+        {
+            this.slideDist--;
+        }
+
+        internal function frame33():*
+        {
+            this.slideDist--;
+        }
+
+        internal function frame34():*
+        {
+            this.slideDist--;
+        }
+
+        internal function frame35():*
+        {
+            this.slideDist--;
+        }
+
+        internal function frame36():*
+        {
+            this.slideDist--;
+            this.slideDist--;
+        }
+
+        internal function frame37():*
+        {
+            this.slideDist--;
+        }
+
+        internal function frame39():*
         {
             this.self.endAttack();
         }
 
-        internal function frame20():*
+        internal function frame40():*
         {
             this.self.resetMovement();
             this.self.setYSpeed(0);
@@ -184,13 +281,13 @@ package goku_fla
             this.self.playAttackSound(3);
         }
 
-        internal function frame21():*
+        internal function frame41():*
         {
             this.self.attachEffectOverlay("goku_dairEffect");
             this.self.refreshAttackID();
         }
 
-        internal function frame30():*
+        internal function frame47():*
         {
             this.self.endAttack();
         }
