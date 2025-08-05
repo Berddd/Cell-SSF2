@@ -51,7 +51,7 @@ package goku_fla
 
         public function goku_grabnew_458()
         {
-            addFrameScript(0, this.frame1, 14, this.frame15, 15, this.frame16, 16, this.frame17, 17, this.frame18, 24, this.frame25);
+            addFrameScript(0, this.frame1, 7, this.frame8, 15, this.frame16, 16, this.frame17, 17, this.frame18, 18, this.frame19, 20, this.frame21, 29, this.frame30);
         }
 
         internal function frame1():*
@@ -62,29 +62,40 @@ package goku_fla
                 this.xframe = "grab";
             };
         }
+		
+		internal function frame8():*
+		{
+			SSF2API.playSound("dbz_swingsound1");
+		}
 
-        internal function frame15():*
+        internal function frame16():*
         {
             this.self.endAttack();
         }
 
-        internal function frame16():*
+        internal function frame17():*
         {
             this.xframe = "grab";
             stop();
         }
 
-        internal function frame17():*
+        internal function frame18():*
         {
             gotoAndStop("grabbed");
         }
 
-        internal function frame18():*
+        internal function frame19():*
         {
             this.xframe = "attack";
+			SSF2API.playSound("neckchokinggrip");
+        }
+		
+		internal function frame21():*
+        {
+            SSF2API.playSound("neckchokingtight");
         }
 
-        internal function frame25():*
+        internal function frame30():*
         {
             this.gotoAndStop("grabbed");
         }

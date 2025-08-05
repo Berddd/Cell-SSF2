@@ -23,7 +23,7 @@ package goku_fla
 
         public function goku_defend_473()
         {
-            addFrameScript(0, this.frame1, 3, this.frame4);
+            addFrameScript(0, this.frame1, 93, this.frame94);
         }
 
         internal function frame1():*
@@ -31,7 +31,7 @@ package goku_fla
             this.self = SSF2API.getCharacter(this);
         }
 
-        internal function frame4():*
+        internal function frame94():*
         {
             gotoAndPlay("redo");
         }

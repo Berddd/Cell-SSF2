@@ -57,6 +57,7 @@ package goku_fla
 		    {
 			    effectMC.parent.setChildIndex(effectMC,this.self.getMC().parent.getChildIndex(this.self.getMC()));
 		    }
+			SSF2API.playSound("cell_landingsound");
         }
 
         internal function frame7():*

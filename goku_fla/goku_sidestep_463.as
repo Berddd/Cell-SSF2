@@ -48,25 +48,35 @@ package goku_fla
 
         public function goku_sidestep_463()
         {
-            addFrameScript(0, this.frame1, 1, this.frame2, 10, this.frame11, 12, this.frame13);
+            addFrameScript(0, this.frame1, 3, this.frame4, 4, this.frame5, 10, this.frame11, 14, this.frame15, 15, this.frame16);
         }
 
         internal function frame1():*
         {
             this.self = SSF2API.getCharacter(this);
         }
-
-        internal function frame2():*
+		
+		internal function frame4():*
         {
             this.self.setIntangibility(true);
         }
 
-        internal function frame11():*
+		internal function frame5():*
+        {
+            SSF2API.playSound("instanttransmissionsfx");
+        }
+		
+		internal function frame11():*
+        {
+            SSF2API.playSound("teleport2sfx");
+        }
+
+        internal function frame15():*
         {
             this.self.setIntangibility(false);
         }
 
-        internal function frame13():*
+        internal function frame16():*
         {
             this.self.endAttack();
         }

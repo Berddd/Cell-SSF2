@@ -57,6 +57,8 @@ package goku_fla
 		    {
 			    effectMC.parent.setChildIndex(effectMC,this.self.getMC().parent.getChildIndex(this.self.getMC()));
 		    }
+			SSF2API.playSound("groundrecover_forcell");
+			SSF2API.playSound("cell_realfootstepfixed");
         }
 
         internal function frame8():*

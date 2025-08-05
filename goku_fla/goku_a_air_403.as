@@ -49,24 +49,33 @@ package goku_fla
         public var playsound:Number;
         public var audio:Number;
         public var newStats:Object;
+		public var controls:Object;
 
         public function goku_a_air_403()
         {
-            addFrameScript(0, this.frame1, 2, this.frame3, 3, this.frame4, 6, this.frame7, 7, this.frame8, 9, this.frame10, 10, this.frame11, 13, this.frame14);
+            addFrameScript(0, this.frame1, 2, this.frame3, 3, this.frame4, 4, this.frame5, 5, this.frame6, 13, this.frame14, 14, this.frame15, 22, this.frame23);
         }
-
-        public function jumpToContinue(_arg_1:Event=null):*
+		
+		public function updateControls() : *
         {
-            SSF2API.removeEventListener(this.self, SSF2Event.GROUND_TOUCH, this.jumpToContinue);
-            this.self.updateAttackStats({"allowControl":false});
-            gotoAndPlay("continue");
+         this.controls = this.self.getControls();
         }
+		
+		public function jumpToContinue(param1:Event=null) : *
+	    {
+		  SSF2API.removeEventListener(this.self,SSF2Event.ATTACK_CONNECT,this.jumpToContinue);
+		  this.self.setYSpeed(-9);
+		  gotoAndPlay("ifhit");
+	    }
 
         internal function frame1():*
         {
             this.self = SSF2API.getCharacter(this);
             if ((((parent) && (SSF2API.isReady())) && (this.self)))
             {
+				this.controls = this.self.getControls();
+			    SSF2API.createTimer(this.self,1,23,this.updateControls);
+                SSF2API.addEventListener(this.self,SSF2Event.ATTACK_CONNECT,this.self.toContinue);
                 this.playsound = SSF2API.random();
                 this.audio = this.self.getGlobalVariable("audio");
             };
@@ -75,11 +84,20 @@ package goku_fla
                 SSF2API.addEventListener(this.self, SSF2Event.GROUND_TOUCH, this.self.toIdle);
             };
         }
+		
+		internal function frame3():*
+		{
+			this.self.setYSpeed(-8);
+		}
+		
+		internal function frame4():*
+		{
+			SSF2API.removeEventListener(this.self, SSF2Event.GROUND_TOUCH, this.self.toIdle);
+            SSF2API.addEventListener(this.self, SSF2Event.GROUND_TOUCH, this.self.toLand);
+		}
 
-        internal function frame3():*
+        internal function frame5():*
         {
-            SSF2API.removeEventListener(this.self, SSF2Event.GROUND_TOUCH, this.self.toIdle);
-            SSF2API.addEventListener(this.self, SSF2Event.GROUND_TOUCH, this.jumpToContinue);
             if ((((this.playsound > 0.2) && (this.playsound <= 0.4)) && (!(this.audio == 1))))
             {
                 this.self.playVoiceSound(1);
@@ -100,42 +118,28 @@ package goku_fla
                 this.self.playVoiceSound(4);
                 this.self.setGlobalVariable("audio", 4);
             };
+			this.self.playAttackSound(1);
+			this.self.setYSpeed(10);
+			SSF2API.addEventListener(this.self,SSF2Event.ATTACK_CONNECT,this.jumpToContinue);
         }
+		
+		internal function frame6():*
+		{
+			SSF2API.removeEventListener(this.self,SSF2Event.ATTACK_CONNECT,this.jumpToContinue);
+		}
 
-        internal function frame4():*
+        internal function frame14():*
         {
-            this.self.playAttackSound(1);
-        }
-
-        internal function frame7():*
-        {
-            this.newStats = {
-                "direction":150,
-                "power":50,
-                "damage":7,
-                "effectSound":"brawl_kick_s"
-            };
-            this.self.updateAttackBoxStats(1, this.newStats);
-        }
-
-        internal function frame8():*
-        {
-            this.self.playAttackSound(2);
-            SSF2API.removeEventListener(this.self, SSF2Event.GROUND_TOUCH, this.jumpToContinue);
+            SSF2API.removeEventListener(this.self, SSF2Event.GROUND_TOUCH, this.self.toLand);
             SSF2API.addEventListener(this.self, SSF2Event.GROUND_TOUCH, this.self.toIdle);
         }
 
-        internal function frame10():*
+        internal function frame15():*
         {
             this.self.endAttack();
         }
-
-        internal function frame11():*
-        {
-            this.self.updateAttackStats({"cancelWhenAirborne":true});
-        }
-
-        internal function frame14():*
+		
+		internal function frame23():*
         {
             this.self.endAttack();
         }

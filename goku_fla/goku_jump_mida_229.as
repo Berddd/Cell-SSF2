@@ -24,7 +24,7 @@ package goku_fla
 
         public function goku_jump_mida_229()
         {
-            addFrameScript(0, this.frame1, 2, this.frame3, 17, this.frame18, 19, this.frame20);
+            addFrameScript(0, this.frame1, 2, this.frame3, 19, this.frame20, 20, this.frame21, 22, this.frame23);
         }
 
         internal function frame1():*
@@ -45,13 +45,18 @@ package goku_fla
 			    effectMC.parent.setChildIndex(effectMC,this.self.getMC().parent.getChildIndex(this.self.getMC()));
 		    }
 		}
+		
+		internal function frame20():*
+        {
+            this.self.endAttack();
+        }
 
-        internal function frame18():*
+        internal function frame21():*
         {
             this.xframe = "hover";
         }
 
-        internal function frame20():*
+        internal function frame23():*
         {
             this.done = true;
             gotoAndPlay("redo");

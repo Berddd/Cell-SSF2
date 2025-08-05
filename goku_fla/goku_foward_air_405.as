@@ -38,6 +38,7 @@ package goku_fla
     {
 
         public var attackBox:MovieClip;
+		public var attackBox2:MovieClip;
         public var hitBox:MovieClip;
         public var hitBox2:MovieClip;
         public var hitBox3:MovieClip;
@@ -53,14 +54,7 @@ package goku_fla
 
         public function goku_foward_air_405()
         {
-            addFrameScript(0, this.frame1, 1, this.frame2, 6, this.frame7, 7, this.frame8, 15, this.frame16, 21, this.frame22);
-        }
-
-        public function jumpToContinue(_arg_1:Event=null):*
-        {
-            SSF2API.removeEventListener(this.self, SSF2Event.GROUND_TOUCH, this.jumpToContinue);
-            this.self.updateAttackStats({"allowControl":false});
-            gotoAndPlay("continue");
+            addFrameScript(0, this.frame1, 5, this.frame6, 6, this.frame7, 16, this.frame17);
         }
 
         internal function frame1():*
@@ -77,13 +71,7 @@ package goku_fla
             };
         }
 
-        internal function frame2():*
-        {
-            SSF2API.removeEventListener(this.self, SSF2Event.GROUND_TOUCH, this.self.toIdle);
-            SSF2API.addEventListener(this.self, SSF2Event.GROUND_TOUCH, this.jumpToContinue);
-        }
-
-        internal function frame7():*
+        internal function frame6():*
         {
             if ((((this.playsound > 0.2) && (this.playsound <= 0.4)) && (!(this.audio == 1))))
             {
@@ -106,25 +94,25 @@ package goku_fla
                 this.self.setGlobalVariable("audio", 4);
             };
             this.self.playAttackSound(1);
+			SSF2API.removeEventListener(this.self, SSF2Event.GROUND_TOUCH, this.self.toIdle);
+            SSF2API.addEventListener(this.self, SSF2Event.GROUND_TOUCH, this.self.toLand);
         }
 
-        internal function frame8():*
+        internal function frame7():*
         {
-            this.newStats = {"direction":310};
+            this.newStats = {
+                "damage":4,
+				"priority":2,
+				"direction":25,
+				"effect_id":"hitsparkforwardlightforcell1"
+            };
             this.self.updateAttackBoxStats(1, this.newStats);
         }
 
-        internal function frame16():*
+        internal function frame17():*
         {
             this.self.endAttack();
         }
-
-        internal function frame22():*
-        {
-            this.self.endAttack();
-        }
-
-
     }
 }//package goku_fla
 

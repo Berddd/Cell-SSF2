@@ -86,7 +86,7 @@ package goku_fla
                 this.self.setGlobalVariable("audio", 4);
             };
             this.self.playAttackSound(1);
-            this.self.setXSpeed(8, false);
+            this.self.setXSpeed(11, false);
         }
 
         internal function frame10():*

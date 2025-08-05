@@ -47,17 +47,78 @@ package goku_fla
 
         public function goku_airdodge_461()
         {
-            addFrameScript(0, this.frame1, 2, this.frame3, 14, this.frame15, 23, this.frame24);
+            addFrameScript(0, this.frame1, 2, this.frame3, 3, this.frame4, 5, this.frame6, 7, this.frame8, 9, this.frame10, 11, this.frame12, 13, this.frame14, 14, this.frame15, 20, this.frame21);
         }
 
         internal function frame1():*
         {
             this.self = SSF2API.getCharacter(this);
+			SSF2API.playSound("airrecoverforcell");
         }
 
         internal function frame3():*
         {
             this.self.setIntangibility(true);
+        }
+		
+		internal function frame4():*
+        {
+            this.self = SSF2API.getCharacter(this);
+			var effectMC:MovieClip = this.self.attachEffect("cellairdodgeafterimage1");
+		    if ((effectMC.parent) && (effectMC.parent === this.self.getMC().parent))
+		    {
+			    effectMC.parent.setChildIndex(effectMC,this.self.getMC().parent.getChildIndex(this.self.getMC()));
+		    }
+        }
+		
+		internal function frame6():*
+        {
+            this.self = SSF2API.getCharacter(this);
+			var effectMC:MovieClip = this.self.attachEffect("cellairdodgeafterimage1");
+		    if ((effectMC.parent) && (effectMC.parent === this.self.getMC().parent))
+		    {
+			    effectMC.parent.setChildIndex(effectMC,this.self.getMC().parent.getChildIndex(this.self.getMC()));
+		    }
+        }
+		
+		internal function frame8():*
+        {
+            this.self = SSF2API.getCharacter(this);
+			var effectMC:MovieClip = this.self.attachEffect("cellairdodgeafterimage1");
+		    if ((effectMC.parent) && (effectMC.parent === this.self.getMC().parent))
+		    {
+			    effectMC.parent.setChildIndex(effectMC,this.self.getMC().parent.getChildIndex(this.self.getMC()));
+		    }
+        }
+		
+		internal function frame10():*
+        {
+            this.self = SSF2API.getCharacter(this);
+			var effectMC:MovieClip = this.self.attachEffect("cellairdodgeafterimage1");
+		    if ((effectMC.parent) && (effectMC.parent === this.self.getMC().parent))
+		    {
+			    effectMC.parent.setChildIndex(effectMC,this.self.getMC().parent.getChildIndex(this.self.getMC()));
+		    }
+        }
+		
+		internal function frame12():*
+        {
+            this.self = SSF2API.getCharacter(this);
+			var effectMC:MovieClip = this.self.attachEffect("cellairdodgeafterimage1");
+		    if ((effectMC.parent) && (effectMC.parent === this.self.getMC().parent))
+		    {
+			    effectMC.parent.setChildIndex(effectMC,this.self.getMC().parent.getChildIndex(this.self.getMC()));
+		    }
+        }
+		
+		internal function frame14():*
+        {
+            this.self = SSF2API.getCharacter(this);
+			var effectMC:MovieClip = this.self.attachEffect("cellairdodgeafterimage1");
+		    if ((effectMC.parent) && (effectMC.parent === this.self.getMC().parent))
+		    {
+			    effectMC.parent.setChildIndex(effectMC,this.self.getMC().parent.getChildIndex(this.self.getMC()));
+		    }
         }
 
         internal function frame15():*
@@ -65,7 +126,7 @@ package goku_fla
             this.self.setIntangibility(false);
         }
 
-        internal function frame24():*
+        internal function frame21():*
         {
             this.self.endAttack();
         }

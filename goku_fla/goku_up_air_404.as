@@ -52,7 +52,7 @@ package goku_fla
 
         public function goku_up_air_404()
         {
-            addFrameScript(0, this.frame1, 3, this.frame4, 4, this.frame5, 6, this.frame7, 11, this.frame12, 13, this.frame14);
+            addFrameScript(0, this.frame1, 4, this.frame5, 5, this.frame6, 10, this.frame11, 12, this.frame13);
         }
 
         internal function frame1():*
@@ -69,7 +69,7 @@ package goku_fla
             };
         }
 
-        internal function frame4():*
+        internal function frame5():*
         {
             if ((((this.playsound > 0.2) && (this.playsound <= 0.4)) && (!(this.audio == 1))))
             {
@@ -95,26 +95,20 @@ package goku_fla
             SSF2API.removeEventListener(this.self, SSF2Event.GROUND_TOUCH, this.self.toIdle);
             SSF2API.addEventListener(this.self, SSF2Event.GROUND_TOUCH, this.self.toLand);
         }
-
-        internal function frame5():*
+		
+		internal function frame6():*
         {
             this.newStats = {"direction":120};
             this.self.updateAttackBoxStats(1, this.newStats);
         }
 
-        internal function frame7():*
-        {
-            this.newStats2 = {"direction":140};
-            this.self.updateAttackBoxStats(1, this.newStats2);
-        }
-
-        internal function frame12():*
+        internal function frame11():*
         {
             SSF2API.removeEventListener(this.self, SSF2Event.GROUND_TOUCH, this.self.toLand);
             SSF2API.addEventListener(this.self, SSF2Event.GROUND_TOUCH, this.self.toIdle);
         }
 
-        internal function frame14():*
+        internal function frame13():*
         {
             this.self.endAttack();
         }

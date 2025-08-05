@@ -38,6 +38,7 @@ package goku_fla
     {
 
         public var attackBox:MovieClip;
+		public var attackBox2:MovieClip;
         public var hitBox:MovieClip;
         public var hitBox2:MovieClip;
         public var hitBox3:MovieClip;
@@ -51,17 +52,11 @@ package goku_fla
         public var playsound:Number;
         public var audio:Number;
         public var newStats:Object;
+		public var newStats2:Object;
 
         public function goku_back_air_406()
         {
-            addFrameScript(0, this.frame1, 2, this.frame3, 4, this.frame5, 5, this.frame6, 7, this.frame8, 11, this.frame12, 14, this.frame15, 17, this.frame18);
-        }
-
-        public function jumpToContinue(_arg_1:Event=null):*
-        {
-            SSF2API.removeEventListener(this.self, SSF2Event.GROUND_TOUCH, this.jumpToContinue);
-            this.self.updateAttackStats({"allowControl":false});
-            gotoAndPlay("continue");
+            addFrameScript(0, this.frame1, 6, this.frame7, 7, this.frame8, 19, this.frame20);
         }
 
         internal function frame1():*
@@ -78,18 +73,7 @@ package goku_fla
             };
         }
 
-        internal function frame3():*
-        {
-            SSF2API.removeEventListener(this.self, SSF2Event.GROUND_TOUCH, this.self.toIdle);
-            SSF2API.addEventListener(this.self, SSF2Event.GROUND_TOUCH, this.jumpToContinue);
-        }
-
-        internal function frame5():*
-        {
-            this.self.playAttackSound(1);
-        }
-
-        internal function frame6():*
+        internal function frame7():*
         {
             if ((((this.playsound > 0.2) && (this.playsound <= 0.4)) && (!(this.audio == 1))))
             {
@@ -111,31 +95,33 @@ package goku_fla
                 this.self.playVoiceSound(4);
                 this.self.setGlobalVariable("audio", 4);
             };
+            this.self.playAttackSound(1);
+			SSF2API.removeEventListener(this.self, SSF2Event.GROUND_TOUCH, this.self.toIdle);
+            SSF2API.addEventListener(this.self, SSF2Event.GROUND_TOUCH, this.self.toLand);
         }
 
         internal function frame8():*
         {
-            this.newStats = {"direction":30};
+            this.newStats = {
+                "direction":30,
+				"effect_id":"hitsparkforwardlightforcell1",
+				"camShake":6,
+				"effectSound":"goodsmack"
+            };
             this.self.updateAttackBoxStats(1, this.newStats);
+			this.newStats = {
+                "direction":60,
+				"camShake":3,
+				"effect_id":"downtiltspark"
+            };
+            this.self.updateAttackBox2Stats(1, this.newStats2);
         }
 
-        internal function frame12():*
+        internal function frame20():*
         {
-            SSF2API.removeEventListener(this.self, SSF2Event.GROUND_TOUCH, this.jumpToContinue);
-            SSF2API.addEventListener(this.self, SSF2Event.GROUND_TOUCH, this.self.toIdle);
-        }
-
-        internal function frame15():*
-        {
+			this.self.flip();
             this.self.endAttack();
         }
-
-        internal function frame18():*
-        {
-            this.self.endAttack();
-        }
-
-
     }
-}//package goku_fla
+}
 
