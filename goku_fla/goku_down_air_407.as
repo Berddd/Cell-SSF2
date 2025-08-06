@@ -57,7 +57,7 @@ package goku_fla
 
         public function goku_down_air_407()
         {
-            addFrameScript(0, this.frame1, 4, this.frame5, 10, this.frame11, 13, this.frame14, 14, this.frame15, 15, this.frame16, 16, this.frame17, 17, this.frame18, 18, this.frame19, 19, this.frame20, 20, this.frame21, 21, this.frame22, 24, this.frame25, 25, this.frame26, 28, this.frame29, 29, this.frame30, 30, this.frame31, 31, this.frame32, 32, this.frame33, 33, this.frame34, 34, this.frame35, 35, this.frame36, 36, this.frame37, 38, this.frame39, 39, this.frame40, 40, this.frame41, 46, this.frame47);
+            addFrameScript(0, this.frame1, 4, this.frame5, 10, this.frame11, 13, this.frame14, 14, this.frame15, 15, this.frame16, 16, this.frame17, 17, this.frame18, 18, this.frame19, 19, this.frame20, 20, this.frame21, 21, this.frame22, 24, this.frame25, 25, this.frame26, 28, this.frame29, 29, this.frame30, 30, this.frame31, 31, this.frame32, 32, this.frame33, 33, this.frame34, 34, this.frame35, 35, this.frame36, 36, this.frame37, 42, this.frame43);
         }
 
         public function jumpToContinue(_arg_1:Event=null):*
@@ -122,12 +122,13 @@ package goku_fla
                 this.self.playVoiceSound(4);
                 this.self.setGlobalVariable("audio", 4);
             };
-            this.self.setYSpeed(10);
+            this.self.setYSpeed(15);
             this.self.setXSpeed(8, false);
             this.self.playAttackSound(1);
             this.self.playAttackSound(2);
             SSF2API.removeEventListener(this.self, SSF2Event.GROUND_TOUCH, this.self.toIdle);
             SSF2API.addEventListener(this.self, SSF2Event.GROUND_TOUCH, this.jumpToContinue);
+			SSF2API.destroyTimer(this.self, this.chargeCheck);
         }
 
         internal function frame14():*
@@ -208,7 +209,6 @@ package goku_fla
             this.self.setYSpeed(10);
             this.self.setXSpeed(8, false);
             this.self.playAttackSound(1);
-            this.self.playAttackSound(2);
             SSF2API.removeEventListener(this.self, SSF2Event.GROUND_TOUCH, this.self.toIdle);
             SSF2API.addEventListener(this.self, SSF2Event.GROUND_TOUCH, this.jumpToContinue);
         }
@@ -247,26 +247,10 @@ package goku_fla
 
         internal function frame35():*
         {
-            this.slideDist--;
-        }
-
-        internal function frame36():*
-        {
-            this.slideDist--;
-            this.slideDist--;
-        }
-
-        internal function frame37():*
-        {
-            this.slideDist--;
-        }
-
-        internal function frame39():*
-        {
             this.self.endAttack();
         }
 
-        internal function frame40():*
+        internal function frame36():*
         {
             this.self.resetMovement();
             this.self.setYSpeed(0);
@@ -281,13 +265,13 @@ package goku_fla
             this.self.playAttackSound(3);
         }
 
-        internal function frame41():*
+        internal function frame37():*
         {
             this.self.attachEffectOverlay("goku_dairEffect");
             this.self.refreshAttackID();
         }
 
-        internal function frame47():*
+        internal function frame43():*
         {
             this.self.endAttack();
         }
